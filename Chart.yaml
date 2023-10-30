@@ -3,16 +3,15 @@ name: kubernetes-etcd-backup
 description: Chart for kubernetes-etcd-backup solution
 type: application
 version: 1.0.0
-appVersion: v1.6.16
+appVersion: v1.0.1
 keywords:
-  - etcd-etcd-backup
+  - kubernetes-etcd-backup
   - kubernetes
   - backup
   - etcd
 home: https://github.com/adfinis/openshift-etcd-backup
 sources:
-  - https://github.com/adfinis/openshift-etcd-backup
-  - https://github.com/Xelef2000/general-etcd-backup
+  - https://github.com/Xelef2000/kubernetes-etcd-backup
 maintainers:
   - name: adfinis
     email: support@adfinis.com
