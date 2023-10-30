@@ -4,7 +4,7 @@
 
 Chart for kubernetes-etcd-backup solution
 
-**Homepage:** <https://github.com/adfinis/openshift-etcd-backup>
+**Homepage:** <https://github.com/Xelef2000/kubernetes-etcd-backup>
 
 ## Maintainers
 

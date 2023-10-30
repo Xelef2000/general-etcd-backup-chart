@@ -9,7 +9,7 @@ keywords:
   - kubernetes
   - backup
   - etcd
-home: https://github.com/adfinis/openshift-etcd-backup
+home: https://github.com/Xelef2000/kubernetes-etcd-backup
 sources:
   - https://github.com/Xelef2000/kubernetes-etcd-backup
 maintainers:
