@@ -1,4 +1,4 @@
-# Default values for openshift-etcd-backup.
+# Default values for kubernetes-etcd-backup.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -71,12 +71,7 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-nodeSelector:
-  # -- The backup job should run on masters as etcd runs on them
-  node-role.kubernetes.io/master: ""
 
-
-affinity: {}
 
 monitoring:
 # -- Deploy PrometheusRule to be alerted in case of backup fails as decribed [here](https://github.com/adfinis/openshift-etcd-backup/blob/main/etcd-backup-cronjob-monitor.PrometheusRule.yaml).
