@@ -16,6 +16,9 @@ spec:
       backoffLimit: 0
       template:
         spec:
+          securityContext:
+              runAsUser: 1000
+              fsGroup: 1000
           containers:
           - command:
             - /bin/sh
@@ -29,14 +32,22 @@ spec:
             resources:
               {{- toYaml .Values.resources | nindent 14 }}
             volumeMounts:
-            - name: host
-              mountPath: /host
-            {{- if or .Values.persistence.nfs.enabled .Values.persistence.provisioning.enabled .Values.persistence.hostPath.enabled }}
+            - name: etcd-peer-tls
+              mountPath: /etc/kubernetes/pki/etcd-peer
+            - name: etcd-server-ca
+              mountPath: /etc/kubernetes/pki/etcd-ca
+            {{- if or .Values.persistence.nfs.enabled .Values.persistence.provisioning.enabled }}
             - name: volume-backup
               mountPath: /backup
             {{- end }}
           restartPolicy: Never
           volumes:
+          - name: etcd-peer-tls
+            secret:
+              secretName: {{ .Values.etcdCertification.etcdPeerTlsName }}
+          - name: etcd-server-ca
+            secret:
+              secretName: {{ .Values.etcdCertification.etcdServerCaName }}
           - name: volume-backup
             {{- if .Values.persistence.nfs.enabled }}
             nfs:
@@ -45,9 +56,6 @@ spec:
             {{- else if .Values.persistence.provisioning.enabled }}
             persistentVolumeClaim:
               claimName: {{ include "kubernetes-etcd-backup.fullname" . }}
-            {{- else if .Values.persistence.hostPath.enabled }}
-            hostPath:
-              path: {{ .Values.persistence.hostPath.path | quote }}
-              type: Directory
             {{- end }}
-          {{- end }}
+          
+        

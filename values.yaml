@@ -20,9 +20,15 @@ backup:
   # -- Set umask during the backup
   umask: "0027"
 
-etcd-configuration:
+etcdConfiguration:
   # -- Etcd endpoint ip or hostname without protocol or port
   endpoint: ""
+
+etcdCertification:
+  # -- etcd-peer-tls secret name
+  etcdPeerTlsName: ""
+  # -- etcd-server-ca secret key
+  etcdServerCaName: ""
 
 persistence:
   # -- Set reclaim policy (Retain or Delete)
@@ -35,12 +41,7 @@ persistence:
     # -- NFS server name or IP
     server: example.com
     # -- NFS server path
-    path: "/etcd-backups"
-  hostPath:
-    # -- Enable hostPath
-    enabled: true
-    # -- hostPath existing path on host
-    path: "/mnt/etcd-backups"
+    path: "nfs/example/path"
   provisioning:
     # -- Enable provisioned backend storage with default or configured storageClass
     enabled: false
@@ -52,14 +53,14 @@ image:
   # -- Image pull policy configuration
   pullPolicy: Always
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 nameOverride: ""
 fullnameOverride: ""
 
 
 
-resources: {}
+resources: 
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

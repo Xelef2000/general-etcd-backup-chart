@@ -11,4 +11,4 @@ data:
   ETCD_BACKUP_KEEP_DAYS: {{ .Values.backup.keepdays | quote }}
   ETCD_BACKUP_KEEP_COUNT: {{ .Values.backup.keepcount | quote }}
   ETCD_BACKUP_UMASK: {{ .Values.backup.umask | quote }}
-  ENDPOINT: {{ .Values.etcd-configuration.endpoint | quote }}
+  ENDPOINT: {{ .Values.etcdConfiguration.endpoint | quote }}
